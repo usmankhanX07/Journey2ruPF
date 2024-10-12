@@ -3,19 +3,22 @@
 int main()
 {
 // reads a string and counts the number of vowels and consonants in it.
-// try incoporating for spaces and for uppercase vowels.
+// try incoporating for uppercase vowels.
 	char name[25];	
-	for(int i=24; i>=0; i--)  //setting all to zero
+	for(int i=24; i>=0; i--) //setting all to zero
 		{name[i]=0;}
 	
 	printf("Enter a word, or a sentence with no spaces:\n");
-	scanf("%s",&name);
+	scanf("%[^\n]",&name);
 	
-	int c;
+	int c, spaces=0;
 	
-	for(int i=0; i<25; i++)	//find the length being occupied by the characters and not zero
+	for(int i=0; i<25; i++)	//find the length
 	{if(name[i]=='\0'){c = i; break;}}	//starts from beginning of array until it finds \0 as rest are 0.
 	
+	for(int i=0; i<c; i++)	// finding the whitespaces (space)
+	{if(name[i]==' '){spaces+=1;}}
+
 	char vowels[]={'a','e','i','o','u'};
 	
 	int i, d=0;
@@ -27,6 +30,6 @@ int main()
 			{d = d+1;}
 		}
 	}
-	printf("The number of vowels is: %d and consonants is: %d",d,c-d);
+	printf("The number of vowels is: %d and consonants is: %d",d,c-d-spaces);
 	return 0;
 }
