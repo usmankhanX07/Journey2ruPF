@@ -9,31 +9,22 @@ int main()
 	printf("Enter a word, or a sentence with spaces:\n");
 	scanf("%[^\n]",&name);
 	
-	int c, spaces=0;
+	int spaces=0;
 	int length = strlen(name);
 	
 	for(int i=0; i<length; i++)	// finding the whitespaces (space)
 	{if(name[i]==' '){spaces+=1;}}
 
-	char vowels[]={'a','e','i','o','u'};
-	char VOWELS[]={'A','E','I','O','U'};
-	
-	int i, d=0, present=0;
+	char vowels[]={'A','E','I','O','U','a','e','i','o','u'};
+
+	int i, d=0;
 	for(i=0; i<length; i++)
 	{
-		for(int abc=0; abc<5; abc++)
+		for(int abc=0; abc<10; abc++)
 		{
-			if(name[i]==VOWELS[abc])
-			{d = d+1; present=1; break;}
-		}
-		if(!present){		
-			for(int abc=0; abc<5; abc++)
-			{
 			if(name[i]==vowels[abc])
 			{d = d+1; break;}
-			}
 		}
-		present=0;
 	}
 	printf("The number of vowels is: %d and consonants is: %d",d,length-d-spaces);
 	return 0;
