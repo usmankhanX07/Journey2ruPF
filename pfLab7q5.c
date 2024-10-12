@@ -1,35 +1,40 @@
 // we were tasked with finding the number of vowels and consonants in a given string.
 #include<stdio.h>
+#include<string.h>	//important for strlen to work
 int main()
 {
 // reads a string and counts the number of vowels and consonants in it.
-// try incoporating for uppercase vowels.
 	char name[25];	
-	for(int i=24; i>=0; i--) //setting all to zero
-		{name[i]=0;}
 	
 	printf("Enter a word, or a sentence with spaces:\n");
 	scanf("%[^\n]",&name);
 	
 	int c, spaces=0;
+	int length = strlen(name);
 	
-	for(int i=0; i<25; i++)	//find the length
-	{if(name[i]=='\0'){c = i; break;}}	//starts from beginning of array until it finds \0 as rest are 0.
-	
-	for(int i=0; i<c; i++)	// finding the whitespaces (space)
+	for(int i=0; i<length; i++)	// finding the whitespaces (space)
 	{if(name[i]==' '){spaces+=1;}}
 
 	char vowels[]={'a','e','i','o','u'};
+	char VOWELS[]={'A','E','I','O','U'};
 	
-	int i, d=0;
-	for(i=0; i<=c; i++)
+	int i, d=0, present=0;
+	for(i=0; i<length; i++)
 	{
 		for(int abc=0; abc<5; abc++)
 		{
-			if(name[i]==vowels[abc])
-			{d = d+1;}
+			if(name[i]==VOWELS[abc])
+			{d = d+1; present=1; break;}
 		}
+		if(!present){		
+			for(int abc=0; abc<5; abc++)
+			{
+			if(name[i]==vowels[abc])
+			{d = d+1; break;}
+			}
+		}
+		present=0;
 	}
-	printf("The number of vowels is: %d and consonants is: %d",d,c-d-spaces);
+	printf("The number of vowels is: %d and consonants is: %d",d,length-d-spaces);
 	return 0;
 }
