@@ -8,7 +8,7 @@ int main()
 	for(int i=24; i>=0; i--) //setting all to zero
 		{name[i]=0;}
 	
-	printf("Enter a word, or a sentence with no spaces:\n");
+	printf("Enter a word, or a sentence with spaces:\n");
 	scanf("%[^\n]",&name);
 	
 	int c, spaces=0;
